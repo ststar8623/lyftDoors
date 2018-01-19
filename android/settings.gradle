@@ -1,0 +1,3 @@
+rootProject.name = 'lyftDoors'
+
+include ':app'
