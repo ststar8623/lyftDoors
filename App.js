@@ -11,6 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
+import Door from './components/Door';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -19,19 +20,21 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+export default class App extends Component {
+  sendText(doors) {
+    alert(doors);
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
+        <View style={styles.leftSide}>
+          <Door color='#41BEB8' name='driver_front' sendText={this.sendText}/>
+          <Door color='#F0AC36' name='passenger_front' sendText={this.sendText}/>
+        </View>
+        <View style={styles.rightSide}>
+          <Door color='#5C66AD' name='driver_rear' sendText={this.sendText}/>
+          <Door color='#F27630' name='passenger_rear' sendText={this.sendText}/>
+        </View>
       </View>
     );
   }
@@ -42,16 +45,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'black',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  leftSide: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  rightSide: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  }
 });
