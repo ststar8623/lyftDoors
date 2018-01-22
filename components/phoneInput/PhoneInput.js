@@ -6,7 +6,7 @@ export default class PhoneInput extends Component {
     return (
       <View style={styles.phone}>
         <Text style={styles.phoneTitle}>Phone Number</Text>
-        <TextInput value={this.props.number} onChangeText={this.props.onChange.bind(this)} style={styles.phoneInput} />
+        <TextInput onChangeText={this.props.onChange} style={styles.phoneInput} />
       </View>
     )
   }
